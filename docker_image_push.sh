@@ -1,7 +1,6 @@
 #!  /bin/bash
 profile="default"
 region="us-west-2"
-buildTag="shellscript-demo:latest"
 
 echo "$1"
 echo "$2"
@@ -22,5 +21,5 @@ fi
 
 aws ecr get-login-password --region "${region}" --profile "${profile}" | docker login --username AWS --password-stdin "120717539064.dkr.ecr.${region}.amazonaws.com"
 docker build -t "${buildTag}" .
-docker tag "devproject:latest 851995445535.dkr.ecr.ap-south-1.amazonaws.com/devproject:latest"
-docker push "docker push 851995445535.dkr.ecr.ap-south-1.amazonaws.com/devproject:latest${buildTag}"
+docker tag "${buildTag}" "851995445535.dkr.ecr.ap-south-1.amazonaws.com/${buildTag}"
+docker push "851995445535.dkr.ecr.ap-south-1.amazonaws.com/${buildTag}"
